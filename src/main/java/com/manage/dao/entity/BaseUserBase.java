@@ -33,44 +33,44 @@ public abstract class BaseUserBase<M extends BaseUserBase<M>> extends Model<M> i
 		return get("phone");
 	}
 
+	public void setIdCard(java.lang.String idCard) {
+		set("id_card", idCard);
+	}
+
+	public java.lang.String getIdCard() {
+		return get("id_card");
+	}
+
+	public void setRealName(java.lang.String realName) {
+		set("real_name", realName);
+	}
+
+	public java.lang.String getRealName() {
+		return get("real_name");
+	}
+
+	public void setShareBonusRate(java.lang.String shareBonusRate) {
+		set("share_bonus_rate", shareBonusRate);
+	}
+
+	public java.lang.String getShareBonusRate() {
+		return get("share_bonus_rate");
+	}
+
+	public void setLockNum(java.lang.String lockNum) {
+		set("lock_num", lockNum);
+	}
+
+	public java.lang.String getLockNum() {
+		return get("lock_num");
+	}
+
 	public void setStatus(java.lang.Integer status) {
 		set("status", status);
 	}
 
 	public java.lang.Integer getStatus() {
 		return get("status");
-	}
-
-	public void setParentNo(java.lang.String parentNo) {
-		set("parent_no", parentNo);
-	}
-
-	public java.lang.String getParentNo() {
-		return get("parent_no");
-	}
-
-	public void setShareCode(java.lang.String shareCode) {
-		set("shareCode", shareCode);
-	}
-
-	public java.lang.String getShareCode() {
-		return get("shareCode");
-	}
-
-	public void setShareNum(java.lang.Integer shareNum) {
-		set("shareNum", shareNum);
-	}
-
-	public java.lang.Integer getShareNum() {
-		return get("shareNum");
-	}
-
-	public void setEthAddr(java.lang.String ethAddr) {
-		set("eth_addr", ethAddr);
-	}
-
-	public java.lang.String getEthAddr() {
-		return get("eth_addr");
 	}
 
 	public void setLoginTimes(java.lang.Integer loginTimes) {
@@ -81,28 +81,20 @@ public abstract class BaseUserBase<M extends BaseUserBase<M>> extends Model<M> i
 		return get("login_times");
 	}
 
-	public void setCreateTime(java.lang.String createTime) {
+	public void setCreateTime(java.util.Date createTime) {
 		set("create_time", createTime);
 	}
 
-	public java.lang.String getCreateTime() {
+	public java.util.Date getCreateTime() {
 		return get("create_time");
 	}
 
-	public void setUpdateTime(java.lang.String updateTime) {
+	public void setUpdateTime(java.util.Date updateTime) {
 		set("update_time", updateTime);
 	}
 
-	public java.lang.String getUpdateTime() {
+	public java.util.Date getUpdateTime() {
 		return get("update_time");
-	}
-
-	public void setBonusStatus(java.lang.Integer bonusStatus) {
-		set("bonus_status", bonusStatus);
-	}
-
-	public java.lang.Integer getBonusStatus() {
-		return get("bonus_status");
 	}
 
 }

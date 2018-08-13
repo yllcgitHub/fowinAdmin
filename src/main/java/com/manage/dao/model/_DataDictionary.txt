@@ -1,3 +1,42 @@
+Table: account_free
+--------------+--------------+------+-----+---------+---------
+ Field        | Type         | Null | Key | Default | Remarks 
+--------------+--------------+------+-----+---------+---------
+ free_id      | INT(10)      | NO   | PRI |         | 自由账户ID  
+ vip_no       | VARCHAR(50)  | NO   |     |         | 会员编号    
+ free_balance | VARCHAR(50)  | NO   |     | 0.0000  | 自由账户余额  
+ create_time  | DATETIME(19) | NO   |     |         |         
+ update_time  | DATETIME(19) | YES  |     |         |         
+ remark       | VARCHAR(255) | YES  |     |         | 备注      
+--------------+--------------+------+-----+---------+---------
+
+Table: account_lock
+--------------+--------------+------+-----+---------+---------
+ Field        | Type         | Null | Key | Default | Remarks 
+--------------+--------------+------+-----+---------+---------
+ lock_id      | INT(10)      | NO   | PRI |         | 锁仓账户ID  
+ vip_no       | VARCHAR(50)  | NO   |     |         | 会员编号    
+ lock_balance | VARCHAR(50)  | NO   |     |         | 锁仓账户余额  
+ create_time  | DATETIME(19) | NO   |     |         |         
+ update_time  | DATETIME(19) | YES  |     |         |         
+ remark       | VARCHAR(255) | YES  |     |         | 备注      
+--------------+--------------+------+-----+---------+---------
+
+Table: log_account_free
+----------------+--------------+------+-----+---------+---------
+ Field          | Type         | Null | Key | Default | Remarks 
+----------------+--------------+------+-----+---------+---------
+ log_id         | INT(10)      | NO   | PRI |         |         
+ vip_no         | VARCHAR(50)  | YES  |     |         | 会员编号    
+ before_balance | VARCHAR(50)  | YES  |     |         |         
+ trade_balance  | VARCHAR(50)  | YES  |     |         |         
+ after_balance  | VARCHAR(50)  | YES  |     |         |         
+ trade_type     | INT(10)      | YES  |     |         | 交易类型(1-锁仓释放,2-分红释放,3-提现)
+ create_time    | DATETIME(19) | YES  |     |         |         
+ remark         | VARCHAR(255) | YES  |     |         |         
+ log_type       | VARCHAR(3)   | YES  |     |         | in-进账 out-出账
+----------------+--------------+------+-----+---------+---------
+
 Table: menu
 -------------+--------------+------+-----+---------+---------
  Field       | Type         | Null | Key | Default | Remarks 
@@ -24,6 +63,18 @@ Table: sms
  create_time | DATETIME(19) | YES  |     |         |         
 -------------+--------------+------+-----+---------+---------
 
+Table: sys_parameter
+-------------+--------------+------+-----+---------+---------
+ Field       | Type         | Null | Key | Default | Remarks 
+-------------+--------------+------+-----+---------+---------
+ id          | INT(10)      | NO   | PRI |         |         
+ param_name  | VARCHAR(50)  | NO   |     |         | 参数名称    
+ param_value | VARCHAR(50)  | NO   |     |         | 参数值     
+ remark      | VARCHAR(255) | YES  |     |         | 参数描述    
+ create_time | DATETIME(19) | NO   |     |         |         
+ update_time | DATETIME(19) | YES  |     |         |         
+-------------+--------------+------+-----+---------+---------
+
 Table: tb_sys_sequence
 ---------------+--------------+------+-----+---------+---------
  Field         | Type         | Null | Key | Default | Remarks 
@@ -42,26 +93,25 @@ Table: user
  password    | VARCHAR(50)  | YES  |     |         | 登录密码    
  type        | VARCHAR(50)  | YES  |     |         | 用户角色(user-普通用户，bam管理员)
  phone       | VARCHAR(20)  | YES  |     |         | 电话号码    
- status      | INT(10)      | YES  |     |         | 锁定状态(opened-未锁定，locked-已锁定)
+ status      | INT(10)      | YES  |     | 1       | 锁定状态(1-未锁定，0-已锁定)
  create_time | DATETIME(19) | YES  |     |         | 创建时间    
  update_time | DATETIME(19) | YES  |     |         |         
 -------------+--------------+------+-----+---------+---------
 
 Table: user_base
---------------+--------------+------+-----+---------+---------
- Field        | Type         | Null | Key | Default | Remarks 
---------------+--------------+------+-----+---------+---------
- id           | INT(10)      | NO   | PRI |         |         
- vip_no       | VARCHAR(50)  | NO   |     |         |         
- phone        | VARCHAR(50)  | NO   |     |         | 手机号     
- status       | INT(10)      | NO   |     | 1       | 账户状态    
- parent_no    | VARCHAR(50)  | YES  |     |         |         
- shareCode    | VARCHAR(255) | YES  |     |         | 推荐码     
- shareNum     | INT(10)      | YES  |     | 0       | 推荐人数    
- eth_addr     | VARCHAR(129) | YES  |     |         | 以太坊钱包地址 
- login_times  | INT(10)      | YES  |     | 0       | 登录次数    
- create_time  | VARCHAR(50)  | YES  |     |         |         
- update_time  | VARCHAR(50)  | YES  |     |         |         
- bonus_status | INT(10)      | YES  |     | 0       | 发奖励状态(0-未发，1-已发) 注：该状态只真的前端是否显示奖励数额
---------------+--------------+------+-----+---------+---------
+------------------+--------------+------+-----+---------+---------
+ Field            | Type         | Null | Key | Default | Remarks 
+------------------+--------------+------+-----+---------+---------
+ id               | INT(10)      | NO   | PRI |         |         
+ vip_no           | VARCHAR(50)  | NO   |     |         | 会员编号    
+ phone            | VARCHAR(50)  | NO   |     |         | 手机号     
+ id_card          | VARCHAR(50)  | YES  |     |         | 身份证号    
+ real_name        | VARCHAR(50)  | YES  |     |         | 用户姓名    
+ share_bonus_rate | VARCHAR(50)  | NO   |     | 0       | 分红比例    
+ lock_num         | VARCHAR(50)  | NO   |     | 0.0000  | 锁仓币总数(释放基数)
+ status           | INT(10)      | NO   |     | 1       | 账户状态    
+ login_times      | INT(10)      | YES  |     | 0       | 登录次数    
+ create_time      | DATETIME(19) | NO   |     |         |         
+ update_time      | DATETIME(19) | YES  |     |         |         
+------------------+--------------+------+-----+---------+---------
 

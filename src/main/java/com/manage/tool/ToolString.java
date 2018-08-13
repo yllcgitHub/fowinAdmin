@@ -1,6 +1,7 @@
 package com.manage.tool;
 
 import java.io.UnsupportedEncodingException;
+import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -26,6 +27,8 @@ public abstract class ToolString {
 
 	@SuppressWarnings("unused")
 	private static Logger log = Logger.getLogger(ToolString.class);
+	
+	public final static DecimalFormat BALANCE_FORMAT = new DecimalFormat("#0.0000");
 
 	/**
 	 * 常用正则表达式

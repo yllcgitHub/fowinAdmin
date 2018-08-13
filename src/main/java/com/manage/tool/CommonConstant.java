@@ -25,4 +25,15 @@ public class CommonConstant {
 	public static class P_CODE {
 		public static final String TEST_PLATFORM = "test456";
 	}
+	
+	public static class TradeType {
+		public final static int LOCK_RELEASE = 1;  // 锁仓释放
+		public final static int SHARE_BONUS_RELEASE = 2; // 分红释放
+		public final static int WITHDRAW = 3;  // 提现
+	}
+	
+	public static class LogType {
+		public final static String IN = "in";
+		public final static String OUT = "out";
+	}
 }

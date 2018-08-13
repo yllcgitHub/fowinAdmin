@@ -5,7 +5,7 @@ import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.Page;
 import com.jfinal.plugin.activerecord.SqlPara;
 import com.manage.common.annotation.MyTxProxy;
-import com.manage.dao.model.User;
+import com.manage.dao.model.LogAccountFree;
 import com.manage.dao.model.UserBase;
 
 /**
@@ -19,7 +19,7 @@ public class UserService {
 
 	
 	/**
-	 * 抄码员获取订单列表
+	 * 获取用户信息列表
 	 * @param pageNumber
 	 * @param pageSize
 	 * @param cond
@@ -30,5 +30,14 @@ public class UserService {
 		return orderPage;
 		
 	}
-
+	
+	/**
+	 * 获取自由账户明细列表
+	 */
+	public Page<LogAccountFree> getAccountFreeList(int pageNumber, int pageSize, Kv cond) {
+		SqlPara sqlPara = Db.getSqlPara("user.getAccountFreeList", cond);
+		Page<LogAccountFree> orderPage = LogAccountFree.dao.paginate(pageNumber, pageSize, sqlPara);
+		return orderPage;
+	}
+	
 }

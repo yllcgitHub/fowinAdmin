@@ -16,8 +16,12 @@ import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 public class _MappingKit {
 
 	public static void mapping(ActiveRecordPlugin arp) {
+		arp.addMapping("account_free", "free_id", AccountFree.class);
+		arp.addMapping("account_lock", "lock_id", AccountLock.class);
+		arp.addMapping("log_account_free", "log_id", LogAccountFree.class);
 		arp.addMapping("menu", "id", Menu.class);
 		arp.addMapping("sms", "sms_id", Sms.class);
+		arp.addMapping("sys_parameter", "id", SysParameter.class);
 		arp.addMapping("tb_sys_sequence", "name", TbSysSequence.class);
 		arp.addMapping("user", "id", User.class);
 		arp.addMapping("user_base", "id", UserBase.class);

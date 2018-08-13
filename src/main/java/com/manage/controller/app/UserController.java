@@ -1,6 +1,5 @@
 package com.manage.controller.app;
 
-import java.sql.SQLException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -16,7 +15,6 @@ import com.manage.dao.model.UserBase;
 import com.manage.tool.CommonConstant;
 import com.manage.tool.DateFormat;
 import com.manage.tool.ResultCode;
-import com.manage.tool.ToolString;
 
 
 /**
@@ -97,47 +95,7 @@ public class UserController extends BaseController {
 		}
 		
 		UserBase user = UserBase.dao.findFirst("select * from user_base where phone=? ", phone);
-		if(user != null){
-			//登录,通知前端,该手机号非第一次登录
-			user.setLoginTimes(user.getLoginTimes() + 1);
-			user.setUpdateTime(currentTime);
-			user.update();
-		} else {
-			// 第一次登录,先注册
-			UserBase lu = new UserBase();
-			lu.setVipNo(this.getVipNo()); //生成vipNo
-			lu.setPhone(phone);
-			
-			//获取推荐人编号,如果没有则不存
-			String shareCode = getPara("invite");
-			if(!ToolString.isNull(shareCode)){
-				UserBase shareUser = UserBase.dao.findFirst("select * from user_base where shareCode=? " ,shareCode);	
-				if (shareUser != null) {
-					lu.setParentNo(shareUser.getVipNo());
-				} else {
-					renderJson(super.result(ResultCode.ERROR_SHARE_CODE, null));
-					return;
-				}
-			}
-			
-			lu.setCreateTime(currentTime);
-			lu.setLoginTimes(1);
-			lu.setUpdateTime(currentTime);
-			if(!lu.save()){
-				throw new SQLException("第一次登录,系统注册失败");
-			}
-			
-			//生成账户
-//			AccountHda acc = new AccountHda();
-//			acc.setVipNo(lu.getVipNo());
-//			acc.setCreateTime(currentTime);
-//			if(!acc.save()){
-//				throw new SQLException("第一次登录,系统生成账户失败");
-//			}
-			
-			user = UserBase.dao.findFirst("select * from user_base where phone=? ", phone);
-	
-		}
+		
 		
 //		//操作成功后更新短信验证码状态
 //		sms.setStatus(0);

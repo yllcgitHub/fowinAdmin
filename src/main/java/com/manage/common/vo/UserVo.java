@@ -11,26 +11,23 @@ public class UserVo {
 	@FieldMeta(name="手机号码")
 	private String phone;
 	
-	@FieldMeta(name="邀请码")
-	private String shareCode;
+	@FieldMeta(name="身份证号")
+	private String idCard;
 	
-	@FieldMeta(name="邀请人数")
-	private String shareNum;
+	@FieldMeta(name="用户姓名")
+	private String userName;
 	
-	@FieldMeta(name="钱包地址")
-	private String ethAddr;
+	@FieldMeta(name="分红比例")
+	private String shareBonusRate;
 	
-	@FieldMeta(name="推荐人编号")
-	private String parentNo;
+	@FieldMeta(name="锁仓币总量")
+	private String lockNum;
 	
-	@FieldMeta(name="推荐人邀请码")
-	private String parentShareCode;
+	@FieldMeta(name="锁仓币账户余额")
+	private String lockBalance;
 	
-	@FieldMeta(name="代币数量")
-	private String num;
-	
-	@FieldMeta(name="发奖状态")
-	private String bonusStatus;
+	@FieldMeta(name="自由账户余额")
+	private String freeBalance;
 	
 	@FieldMeta(name="创建时间")
 	private String createTime;
@@ -59,38 +56,6 @@ public class UserVo {
 		this.phone = phone;
 	}
 
-	public String getParentNo() {
-		return parentNo;
-	}
-
-	public void setParentNo(String parentNo) {
-		this.parentNo = parentNo;
-	}
-
-	public String getShareCode() {
-		return shareCode;
-	}
-
-	public void setShareCode(String shareCode) {
-		this.shareCode = shareCode;
-	}
-
-	public String getShareNum() {
-		return shareNum;
-	}
-
-	public void setShareNum(String shareNum) {
-		this.shareNum = shareNum;
-	}
-
-	public String getEthAddr() {
-		return ethAddr;
-	}
-
-	public void setEthAddr(String ethAddr) {
-		this.ethAddr = ethAddr;
-	}
-
 	public String getCreateTime() {
 		return createTime;
 	}
@@ -99,29 +64,54 @@ public class UserVo {
 		this.createTime = createTime;
 	}
 
-	public String getParentShareCode() {
-		return parentShareCode;
+	public String getIdCard() {
+		return idCard;
 	}
 
-	public void setParentShareCode(String parentShareCode) {
-		this.parentShareCode = parentShareCode;
+	public void setIdCard(String idCard) {
+		this.idCard = idCard;
 	}
 
-	public String getNum() {
-		return num;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setNum(String num) {
-		this.num = num;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
-	public String getBonusStatus() {
-		return bonusStatus;
+	public String getLockNum() {
+		return lockNum;
 	}
 
-	public void setBonusStatus(String bonusStatus) {
-		this.bonusStatus = bonusStatus;
+	public void setLockNum(String lockNum) {
+		this.lockNum = lockNum;
 	}
+
+	public String getLockBalance() {
+		return lockBalance;
+	}
+
+	public void setLockBalance(String lockBalance) {
+		this.lockBalance = lockBalance;
+	}
+
+	public String getFreeBalance() {
+		return freeBalance;
+	}
+
+	public void setFreeBalance(String freeBalance) {
+		this.freeBalance = freeBalance;
+	}
+
+	public String getShareBonusRate() {
+		return shareBonusRate;
+	}
+
+	public void setShareBonusRate(String shareBonusRate) {
+		this.shareBonusRate = shareBonusRate;
+	}
+
 
 	
 }

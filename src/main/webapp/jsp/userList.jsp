@@ -15,7 +15,10 @@
 		<blockquote class="layui-elem-quote">
 		      <a href="javascript:;" class="layui-btn layui-btn-small" onclick="$('#tbList').ajaxPage.refresh();"><i class="layui-icon">&#x1002;</i>刷新 </a>
 		      <a href="javascript:;" class="layui-btn layui-btn-small" onclick="exportXls();"><i class="layui-icon">&#xe61e;</i>导出</a>
-<!-- 			  <a href="javascript:;" class="layui-btn layui-btn-small" id="add"><i class="layui-icon">&#xe608;</i>添加用户</a>   -->
+			  <a href="javascript:;" class="layui-btn layui-btn-small" id="add"><i class="layui-icon">&#xe608;</i>添加用户</a>  
+			  
+			  <a href="javascript:;" class="layui-btn layui-btn-small" onclick="lockRelease();"><i class="layui-icon">&#xe61e;</i>锁仓释放</a>
+			  <a href="javascript:;" class="layui-btn layui-btn-small" onclick="shareBonusRelease();"><i class="layui-icon">&#xe61e;</i>分红释放</a>
 		</blockquote>
 		
 		<i class="layui-icon" style="color: green;"></i>
@@ -31,15 +34,6 @@
 							<div class="layui-input-inline">		  
 								<input class="layui-input"   id="phone" name="phone" value=""
 									  placeholder="手机号" type="text">
-							</div>
-							<div class="layui-input-inline">
-								<input class="layui-input" 	id="shareCode" name="shareCode" value=""
-									  placeholder="邀请码" type="text">
-							</div>
-							
-							<div class="layui-input-inline">
-								<input class="layui-input" 	id="parentShareCode" name="parentShareCode" value=""
-									  placeholder="推荐人邀请码" type="text">
 							</div>
 							
 							<div class="layui-input-inline">
@@ -89,76 +83,66 @@
 					data : "phone"
 				},
 				{
-					colname : "邀请码",
+					colname : "身份证号",
 					type : "text",
-					data : "shareCode"
+					data : "id_card"
 				},
 				{
-					colname : "邀请人数",
+					colname : "用户姓名",
 					type : "text",
-					data : "shareNum"
+					data : "real_name"
 				},
 				{
-					colname : "钱包地址",
+					colname : "分红比例",
 					type : "text",
-					data : "eth_addr"
+					data : "share_bonus_rate"
 				},
 				{
-					colname : "代币数量",
+					colname : "锁仓币总量",
 					type : "text",
-					data : "num"
+					data : "lock_num"
 				},
 				{
-					colname : "推荐人编号",
+					colname : "锁仓币账户余额",
 					type : "text",
-					data : "parent_no"
+					data : "lock_balance"
 				},
 				{
-					colname : "推荐人邀请码",
+					colname : "自由账户余额",
 					type : "text",
-					data : "parentShareCode"
+					data : "free_balance"
 				},
 				{
 					colname : "注册时间",
 					type : "text",
 					data : "create_time"
 				},
-				{
-					colname : "登录次数",
-					type : "text",
-					data : "login_times"
-				},
-				{
-					colname : "最后一次登录时间",
-					type : "text",
-					data : "update_time"
-				},
-				{
-					colname : "发奖状态",
-					type : "dict",
-					data : "bonus_status",
-					dict : {
-						0 : '<i class="layui-icon" style="color:blue;"></i>',
-						1 : '<i class="layui-icon" style="color:green;"></i>',				
-					},
-					btn:{
-						0 : '<a class="layui-text layui-btn-mini">未发</a>',
-						1 : '<a class="layui-text layui-btn-mini">已发</a>',
-					}
-				},
-				{
-					colname : "操作",
-					type : "dict",
-					data : "bonus_status",
-					dict : {
-						0 : '<i class="layui-icon" style="color:blue;"></i>',
-						1 : '<i class="layui-icon" style="color:green;"></i>',				
-					},
-					btn:{
-						0 : '<a onclick="sendBonus(this)" class="layui-btn layui-btn-mini">发奖</a>',
-						1 : '',
-					}
-				},
+// 				{
+// 					colname : "发奖状态",
+// 					type : "dict",
+// 					data : "bonus_status",
+// 					dict : {
+// 						0 : '<i class="layui-icon" style="color:blue;"></i>',
+// 						1 : '<i class="layui-icon" style="color:green;"></i>',				
+// 					},
+// 					btn:{
+// 						0 : '<a class="layui-text layui-btn-mini">未发</a>',
+// 						1 : '<a class="layui-text layui-btn-mini">已发</a>',
+// 					}
+// 				},
+// 				{
+// 					colname : "操作",
+// 					type : "dict",
+// 					data : "bonus_status",
+// 					dict : {
+// 						0 : '<i class="layui-icon" style="color:blue;"></i>',
+// 						1 : '<i class="layui-icon" style="color:green;"></i>',				
+// 					},
+// 					btn:{
+// 						0 : '<a onclick="sendBonus(this)" class="layui-btn layui-btn-mini">发奖</a>',
+// 						1 : '',
+// 					}
+// 				},
 // 				{
 //					colname : "操作",
 //					type : "oper",
@@ -174,7 +158,7 @@
 		$('#tbList').ajaxPage({
 			url : "${contextPath}/bam/user/userList",
 			currPage : 1,
-			condition : [ "id", "shareCode", "phone", "parentShareCode"],
+			condition : [ "id", "phone"],
 			data_mapping : dataMapping
 		});
 
@@ -184,33 +168,50 @@
 		}
 		
 		
-		function sendBonus(obj){
-			// 获取选择的行
-			var row = $('#tbList').ajaxPage.getRowID(obj);
-			// 获取选择的行数据
-			var rowdata = $('#tbList').ajaxPage.getRowData(row);
-			// 获取选择的行ID
-			var id = $('#tbList').ajaxPage.getPrimaryID(obj);
-		
-		 
-			parent.layer.confirm('确认要发放奖励吗？', {
-				btn : [ '确认', '取消' ], //按钮
-				shade : false
-			}, function(index) {
-				parent.layer.close(index);
-				respose = $.ajax({
-					url : "${contextPath}/bam/user/sendBonus",
-					type : "post",
-					data : {
-						"id" : id
-					},
-					async : false,
-					success : function(result) {//返回数据根据结果进行相应的处理  
-						refresh();
-					}
-				});
+		function lockRelease() {
+			htmlobj = $.ajax({
+				url : "${contextPath}/bam/user/toLockRelease",
+				async : false
 			});
-		}
+			var index = layer.open({
+				type : 1,
+				title : '锁仓释放',
+				content : htmlobj.responseText,
+				area : [ '600px', '300px' ],
+				zIndex : 999,
+				maxHeight : 600,
+				maxmin : true,
+				end : function() {
+					refresh();
+				},
+				full : function(elem) {
+					var win = window.top === window.self ? window : parent.window;
+				}
+			});
+		};
+		
+		
+		function shareBonusRelease() {
+			htmlobj = $.ajax({
+				url : "${contextPath}/bam/user/toShareBonusRelease",
+				async : false
+			});
+			var index = layer.open({
+				type : 1,
+				title : '分红释放',
+				content : htmlobj.responseText,
+				area : [ '600px', '300px' ],
+				zIndex : 999,
+				maxHeight : 600,
+				maxmin : true,
+				end : function() {
+					refresh();
+				},
+				full : function(elem) {
+					var win = window.top === window.self ? window : parent.window;
+				}
+			});
+		};
 		
 		
 		// 查询事件
@@ -218,30 +219,30 @@
 			$('#tbList').ajaxPage.refresh();
 		});
 		
-// 		$('#add').on(
-// 				'click',
-// 				function() {
-// 					htmlobj = $.ajax({
-// 						url : "${contextPath}/bam/user/toAddUser",
-// 						async : false
-// 					});
-// 					var index = layer.open({
-// 						type : 1,
-// 						title : '添加用户',
-// 						content : htmlobj.responseText,
-// 						area : [ '800px', '600px' ],
-// 						zIndex : 999,
-// 						maxHeight : 600,
-// 						maxmin : true,
-// 						end : function() {
-// 							refresh();
-// 						},
-// 						full : function(elem) {
-// 							var win = window.top === window.self ? window : parent.window;
-// 						}
-// 					});
+		$('#add').on(
+				'click',
+				function() {
+					htmlobj = $.ajax({
+						url : "${contextPath}/bam/user/toAddUser",
+						async : false
+					});
+					var index = layer.open({
+						type : 1,
+						title : '添加用户',
+						content : htmlobj.responseText,
+						area : [ '800px', '600px' ],
+						zIndex : 999,
+						maxHeight : 600,
+						maxmin : true,
+						end : function() {
+							refresh();
+						},
+						full : function(elem) {
+							var win = window.top === window.self ? window : parent.window;
+						}
+					});
 
-// 		});
+		});
 		
 // 		// 修改活动
 // 		function update(obj) {
@@ -349,10 +350,8 @@
 		
 		// 导出
 		function exportXls(){
-			var shareCode = $("#shareCode").val();
 			var phone = $("#phone").val();
-			var parentShareCode = $("#parentShareCode").val();
-			var urlPath = "${contextPath}/bam/user/exports?shareCode="+shareCode+"&phone="+phone+"&parentShareCode="+parentShareCode;
+			var urlPath = "${contextPath}/bam/user/exports?phone="+phone;
 			window.open(urlPath); 
 		}
 		

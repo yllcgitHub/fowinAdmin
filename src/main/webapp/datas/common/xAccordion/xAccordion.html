@@ -1,0 +1,173 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>xAccordion</title>
+    <style>
+        .accordion-container {
+            display: none;
+        }
+
+        .accordion-container-active {
+            display: block;
+        }
+
+        .accordion {
+            border: 1px solid #000;
+            width: 30%;
+            margin: 30px 0;
+        }
+
+        .accordion-header,
+        .accordion-container {
+            padding: 4px 10px;
+            border-bottom: 1px solid #000;
+            font-size: .75em;
+        }
+
+        .accordion-header {
+            background-color: #ddd;
+            cursor: pointer;
+        }
+
+        .accordion-header-active {
+            border-bottom: none;
+            background-color: #000;
+            color: #fff;
+        }
+
+        .accordion-header-disabled {
+            cursor: default;
+        }
+
+        .accordion-container {}
+
+        .accordion-panel:last-child .accordion-header,
+        .accordion-panel:last-child .accordion-container {
+            border-bottom: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="accordion" id="J_Accordion">
+        <div class="accordion-panel">
+            <div class="accordion-header">accordion header 1</div>
+            <div class="accordion-container">仅一面板模式，不可全折叠(默认)</div>
+        </div>
+        <div class="accordion-panel">
+            <div class="accordion-header">accordion header 2</div>
+            <div class="accordion-container">accordion body 2</div>
+        </div>
+        <div class="accordion-panel">
+            <div class="accordion-header">accordion header 3</div>
+            <div class="accordion-container">accordion body 3</div>
+        </div>
+    </div>
+
+    <div class="accordion" id="J_AccordionAllOpen">
+        <div class="accordion-panel">
+            <div class="accordion-header">accordion header 1</div>
+            <div class="accordion-container">展开所有，可全折叠</div>
+        </div>
+        <div class="accordion-panel">
+            <div class="accordion-header">accordion header 2</div>
+            <div class="accordion-container">accordion body 2</div>
+        </div>
+        <div class="accordion-panel">
+            <div class="accordion-header">accordion header 3</div>
+            <div class="accordion-container">accordion body 3</div>
+        </div>
+    </div>
+
+    <div class="accordion" id="J_AccordionSingleCollapsible">
+        <div class="accordion-panel">
+            <div class="accordion-header">accordion header 1</div>
+            <div class="accordion-container">仅一面板模式，可全折叠</div>
+        </div>
+        <div class="accordion-panel">
+            <div class="accordion-header">accordion header 2</div>
+            <div class="accordion-container">accordion body 2</div>
+        </div>
+        <div class="accordion-panel">
+            <div class="accordion-header">accordion header 3</div>
+            <div class="accordion-container">accordion body 3</div>
+        </div>
+    </div>
+
+    <div class="accordion" id="J_AccordionCollapsible">
+        <div class="accordion-panel">
+            <div class="accordion-header">accordion header 1</div>
+            <div class="accordion-container">多面板，可全折叠</div>
+        </div>
+        <div class="accordion-panel">
+            <div class="accordion-header">accordion header 2</div>
+            <div class="accordion-container">accordion body 2</div>
+        </div>
+        <div class="accordion-panel">
+            <div class="accordion-header">accordion header 3</div>
+            <div class="accordion-container">accordion body 3</div>
+        </div>
+    </div>
+
+    <!--引入CDN jquery文件-->
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <!-- CDN jquery 文件加载失败，则引入本地服务器文件 -->
+    <script type="text/javascript">
+        if (typeof jQuery == 'undefined') {
+            document.write(unescape(
+                "%3Cscript src='../libs/jquery/jquery.1.12.4.min.js' type='text/javascript'%3E%3C/script%3E"));
+        }
+    </script>
+
+    <script src="https://cdn.bootcss.com/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <!-- <script src="../libs/jquery-easing/jquery.easing.min.js"></script> -->
+
+    <script src="xaccordion.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // 默认配置
+            $('#J_Accordion').xAccordion({
+                activeIndex: 1,
+                eventType: 'click',
+                collapsible: false,
+                singleVisible: true,
+                easing: 'swing',
+                APanel: '.accordion-panel',
+                AHeader: '.accordion-header',
+                AContainer: '.accordion-container',
+                APanelActiveCls: 'accordion-panel-active',
+                AHeaderActiveCls: 'accordion-header-active',
+                AHeaderDisabledCls: 'accordion-header-disabled',
+                AContainerActiveCls: 'accordion-container-active'
+            });
+
+            $('#J_AccordionAllOpen').xAccordion({
+                activeIndex: 'all',
+                singleVisible: true,
+            });
+
+            $('#J_AccordionSingleCollapsible').xAccordion({
+                collapsible: true,
+                singleVisible: true,
+            });
+
+            $('#J_AccordionSingle').xAccordion({
+                collapsible: false,
+                singleVisible: true,
+            });
+
+            $('#J_AccordionCollapsible').xAccordion({
+                collapsible: true,
+                singleVisible: false,
+            });
+
+        });
+    </script>
+
+</body>
+
+</html>

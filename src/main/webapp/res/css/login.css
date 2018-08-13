@@ -1,0 +1,151 @@
+.beg-login-bg {
+	background: url(../images/bg.jpg) no-repeat center center fixed;
+	background-color: #393D49;
+	background-size: cover;
+}
+
+.beg-login-box {
+	width: 454px;
+	height: 526px;
+	margin: 0 auto;
+	margin-top: 111px;
+	margin-bottom: 134px;
+	background-color:rgba(255, 255, 255, 0.64);
+	border-radius: 10px;
+	color: aliceblue;
+	overflow: hidden;
+}
+
+.shengda-logo {
+	width: 400px;
+    height: 200px;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 46px;
+    background: url(../images/shengda-logo.png) no-repeat center;
+}
+
+
+.beg-login-box .beg-login-main {
+	padding: 0px 80px 0 105px;
+}
+
+.beg-login-main .layui-form-item {
+	position: relative;
+}
+
+.beg-login-main .layui-form-item .beg-login-icon {
+	position: absolute;
+	color: #cccccc;
+	top: 10px;
+	left: 10px;
+}
+
+.layui-form-item {
+	margin-bottom: 20px;
+}
+
+.beg-login-main .layui-form-item input {
+	height: 40px;
+	border-radius: 10px;
+	box-sizing: border-box;
+	border: 1px solid #808080;
+}
+
+.beg-login-main .layui-form-item input:focus {
+	border-color: #f0997f !important;
+}
+
+.layui-input:hover, .layui-textarea:hover {
+	border-color: #808080 !important;
+}
+.icon-login {
+	top: 7px !important;
+	left: -57px !important;
+	width: 26px;
+	height: 31px;
+	background: url(../images/login-per.png) no-repeat 0 0;
+	background-size: 100%;
+}
+
+.icon-password {
+	top: 7px !important;
+	left: -57px !important;
+	width: 29px;
+	height: 31px;
+	background: url(../images/password-key.png) no-repeat 0 0;
+	background-size: 100%;
+}
+.forget-pass {
+	color: #f19f57;
+	line-height: 38px;
+}
+
+.forget-pass:hover {
+	color: #f19f57;
+}
+
+.layui-btn.layui-btn-primary {
+	background-color: #ee8222;
+	line-height: 54px;
+	width: 100%;
+	padding: 0;
+	margin-top: 30px;
+	text-align: center;
+	color: white;
+	font-size: 24px;
+	height: 54px !important;
+	border-radius: 10px;
+}
+
+.beg-login-box footer {
+	height: 35px;
+	padding: 10px 10px 0 10px;
+}
+
+.beg-login-box footer p {
+	line-height: 35px;
+	text-align: center;
+}
+
+.beg-pull-left {
+	float: left !important;
+}
+
+.beg-pull-right {
+	float: right !important;
+}
+
+.beg-clear {
+	clear: both;
+}
+
+.beg-login-remember {
+	line-height: 38px;
+	color: #000;
+}
+
+.beg-login-remember .layui-form-switch {
+	margin-top: 0px;
+}
+
+.beg-login-code-box {
+	position: relative;
+	padding: 10px;
+}
+
+.beg-login-code-box input {
+	position: absolute;
+	width: 100px;
+}
+
+.beg-login-code-box img {
+	cursor: pointer;
+	position: absolute;
+	left: 115px;
+	height: 38px;
+}
+.beg-login-box .layui-form-switch{border-color:#fff;}
+.beg-login-box .layui-form-onswitch{border-color:#5FB878;}
+.beg-login-box .layui-input{border:none;}
+.beg-login-box .layui-btn-primary{border:none;}

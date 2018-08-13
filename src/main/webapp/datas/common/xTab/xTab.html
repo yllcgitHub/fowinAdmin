@@ -1,0 +1,144 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>选项卡</title>
+    <style>
+        h6 {
+            margin: 0;
+        }
+
+        .tabs,
+        .tab {
+            margin-bottom: 40px;
+            font-size: 0.75em;
+        }
+
+        .tab-panel {
+            clear: both;
+            display: none;
+        }
+
+        .tab-trigger,
+        .tab-panel {
+            padding: 4px 10px;
+        }
+
+        .tab-trigger {
+            float: left;
+            margin-left: -1px;
+            border: 1px solid #000;
+            cursor: pointer;
+        }
+
+        .tab-panel-active {
+            display: block;
+        }
+
+        .tab-trigger-active {
+            background-color: #000;
+            color: #fff;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!--
+        1. 'tab-nav' , 'tab-container' ,方便 选项卡导航 和 选项卡内容 进行丰富的排版, 如:导航在区域上下左右的定位
+        2.  'tab-trigger-active' ,  'tab-panel-active' ,选项卡导航 和 选项卡内容 触发时样式,可添加相关的交互操作
+        -->
+    <h6> eventType: 'click mouseenter'</h6>
+    <div class="tabs">
+        <div class="tab-nav">
+            <div class="tab-trigger">tab 1 trigger</div>
+            <div class="tab-trigger">tab 2 trigger</div>
+            <div class="tab-trigger">tab 2 trigger</div>
+            <div class="tab-trigger">tab 4 trigger</div>
+        </div>
+        <div class="tab-container">
+            <div class="tab-panel">tab panel 1</div>
+            <div class="tab-panel">tab panel 2</div>
+            <div class="tab-panel">tab panel 3</div>
+            <div class="tab-panel">tab panel 4</div>
+        </div>
+    </div>
+
+    <h6>multiple tab</h6>
+    <div class="tabs">
+        <div class="tab-nav">
+            <div class="tab-trigger">tab A trigger </div>
+            <div class="tab-trigger">tab B trigger</div>
+            <div class="tab-trigger">tab C trigger</div>
+        </div>
+        <div class="tab-container">
+            <div class="tab-panel">tab panel A</div>
+            <div class="tab-panel">tab panel B</div>
+            <div class="tab-panel">tab panel C</div>
+        </div>
+    </div>
+
+    <h6> eventType: 'click'</h6>
+    <div class="tab">
+        <div class="tab-nav">
+            <div class="tab-trigger">tab 甲 trigger</div>
+            <div class="tab-trigger">tab 乙 trigger</div>
+            <div class="tab-trigger">tab 丙 trigger</div>
+        </div>
+        <div class="tab-container">
+            <div class="tab-panel">tab panel 甲</div>
+            <div class="tab-panel">tab panel 乙</div>
+            <div class="tab-panel">tab panel 丙</div>
+        </div>
+    </div>
+
+    <!--引入CDN jquery文件-->
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <!-- CDN jquery 文件加载失败，则引入本地服务器文件 -->
+    <script type="text/javascript">
+        if (typeof jQuery == 'undefined') {
+            document.write(unescape(
+                "%3Cscript src='../libs/jquery/jquery.1.12.4.min.js' type='text/javascript'%3E%3C/script%3E"));
+        }
+    </script>
+
+    <script src="xtab.js"></script>
+
+    <script>
+        $(document).ready(function () {
+
+            //页面是否有目标元素
+            ;
+            (function ($) {
+                $.fn.exist = function () {
+                    return this.length;
+                };
+            }(jQuery));
+
+            //<!--结构一样,一个脚本,多次调用-->
+            if ($('.tabs').exist) {
+                $('.tabs').xTab({
+                    eventType: 'click mouseenter' //hoverintent 事件需要引入 hoverIntent.js
+                });
+            }
+
+            //<!--脚本完整配置项-->
+            $('.tab').xTab({
+                activeIndex: 0, //默认激活第几个
+                eventType: 'click', //触发事件类型
+                tabNav: '.tab-nav', //选项卡导航
+                tabTrigger: '.tab-trigger', //选项卡触发
+                tabContainer: '.tab-container', //选项卡内容
+                tabPanel: '.tab-panel', //选项卡面板
+                tabTriggerActiveCls: 'tab-trigger-active', //触发激活的样式名
+                tabPanelActiveCls: 'tab-panel-active' //面板激活的样式名
+            });
+        });
+    </script>
+
+
+</body>
+
+</html>

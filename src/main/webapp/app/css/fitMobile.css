@@ -1,0 +1,41 @@
+@charset "utf-8";
+.mobileTitle{display:none;text-align:center;vertical-align:middle;line-height:100px;}
+.mobileIndustryTitle{display:none;}
+.mobileTitle h2{color:#f88a2f;font-size:22px;display:inline-block;}
+.mobileTitle a{position:absolute;left:20px; top:40px;}
+@media screen and (max-width:1000px) {
+    .sectionWrap{width:100%;max-width:750px;overflow:hidden;}
+    .isBlock,.enSize{display:none;}
+    .mobileTitle{display:block;}
+    .titleBox{text-align:center;}
+    .titleBox p{font-size:24px;}
+    .titleBox h3{font-size:48px;}
+    .onlineSection{width:100%;background:url('../img/mobileOnline.png') no-repeat;height:1038px;}
+    .onlineSection p:first-child{text-align:center;line-height:50px;max-width:auto;padding-top:660px;margin:0 auto 0 auto;font-size:26px;}
+    .offilineSection div{display:block;font-size:20px;}
+    .offilineSection img{width:100%;}
+    .littleSection{width:90%;margin:20px auto 0 auto;font-size:26px;}
+    .col2 div{width:100%;display:block;text-align:center;}
+    .futureImgBox{width:100%;display:block;}
+    .futureInfoBox{width:100%;max-width:100%;margin-left:0;}
+    .futureInfoBox p:first-child,.industryBox p:nth-child(2) {color:#252525;font-size:26px;width:90%;line-height:40px;text-align:center;margin:20px auto 0 auto;}
+    .entertainmentSection{background:url('../img/gameLine.png') no-repeat;height:1034px;}
+    .bitImg{padding:120px 0 100px 0;}
+    .introBox{margin-left:0;}
+    .introBox,.bitInfoBox{width:100%;max-width:100%;}
+    .bitInfoBox p,.introBox p{text-align:center !important;}
+    .introBox p{width:90%;margin:0 auto;}
+    .bitInfoBox p:nth-child(2){font-size:22px;}
+    .introBox p:first-child{font-size:26px;line-height:40px;}
+    .singleBox,.iconInfoBox{max-width:100%;width:auto;}
+    .singleBox>div{display:block;width:100%;}
+    .iconBox{margin:0 auto;}
+    .iconInfoBox p:first-child{font-size:36px;margin-top:20px;}
+    .iconInfoBox p:last-child{font-size:26px;margin-bottom:60px;}
+    .industrySection>div:last-child {margin-left:0;}
+    .industryBox{max-width:100%; margin-bottom:20px;}
+    .industryBox img{width:100%;}
+    .industryBox1 p:first-child{font-size:36px;}
+    .industryBox1{background:url('../img/mobileIndustyBg.png') no-repeat; height:1330px;}
+    .mobileIndustryTitle{display:block;font-size:26px;margin:60px auto;width:90%;color:#fff;line-height:50px;padding-top:300px;}
+}

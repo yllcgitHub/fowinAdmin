@@ -1,0 +1,69 @@
+@charset "utf-8";
+.gameWrap {
+    position: relative;
+    height:auto;
+}
+
+.swiper-container {
+    width: 100%;
+    height: auto;
+    margin: 10% auto;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    width: 106px;
+    height: 106px;
+
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    position: relative;
+}
+
+.swiper-slide-active img {
+    border: 3px solid #f1cc38;
+}
+
+.swiper-slide-active::before {
+    position: absolute;
+    left: 50%;
+    bottom: -5px;
+    content: "";
+    display: block;
+    border-width: 8px;
+    border-style: solid dashed dashed dashed;
+    border-color: #f1cc38 transparent transparent transparent;
+    overflow: hidden;
+    width: 0;
+    height: 0;
+    margin-left: -6px;
+}
+
+.swiper-slide img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+.curImg {
+    width: 100%;
+    text-align: center;
+}
+
+.curImg img {
+    max-width: 200px;
+    height: 200px;
+    border-radius:50%;
+}

@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>跟随条</title>
+    <style>
+        .clearfix:before,
+        .clearfix:after {
+            display: table;
+            content: " ";
+        }
+
+        .clearfix:after {
+            clear: both;
+            overflow: hidden;
+        }
+
+        .clearfix {
+            *zoom: 1;
+        }
+        /* bar */
+
+        .bar-inner {
+            float: left;
+            position: relative;
+            width: 20%;
+            margin: 1%;
+            border: 1px solid #ddd;
+        }
+        /* 这里有设置内边距10px */
+
+        .nav-item {
+            float: left;
+            padding: 0 10px;
+            height: 40px;
+            font-size: 1em;
+            line-height: 40px;
+            list-style: none;
+            cursor: pointer;
+        }
+
+        .follow-bar {
+            display: block;
+            position: absolute;
+            top: 40px;
+            left: 0;
+            width: 100px;
+            height: 2px;
+            padding: 0 10px;
+            /* 修正导航项内边距 */
+            background-color: #21aa8e;
+            -webkit-transition: all linear .2s;
+            transition: all linear .2s;
+        }
+    </style>
+</head>
+
+<body>
+
+    <ul class="bar-inner clearfix J_Bar">
+        <li class="nav-item">触发A</li>
+        <li class="nav-item">触发B</li>
+        <li class="follow-bar"></li>
+    </ul>
+
+    <ul class="bar-inner clearfix J_Bar">
+        <li class="nav-item">触发一</li>
+        <li class="nav-item">触发二</li>
+        <li class="nav-item">触发三</li>
+        <li class="follow-bar"></li>
+    </ul>
+
+    <!--引入CDN jquery文件-->
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <!-- CDN jquery 文件加载失败，则引入本地服务器文件 -->
+    <script type="text/javascript">
+        if (typeof jQuery == 'undefined') {
+            document.write(unescape(
+                "%3Cscript src='../libs/jquery/jquery.1.12.4.min.js' type='text/javascript'%3E%3C/script%3E"));
+        }
+    </script>
+
+    <!--引入插件-->
+    <script src="xbar.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            //判断元素是否存在
+            $.fn.exist = function () {
+                return this.length;
+            };
+            //调用插件
+            if ($('.J_Bar').exist()) {
+                $('.J_Bar').xBar();
+            }
+        });
+    </script>
+</body>
+
+</html>

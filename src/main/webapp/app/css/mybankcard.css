@@ -1,0 +1,436 @@
+
+/*content_index*/
+
+.content_index {
+	padding: 5%;
+}
+
+.invite_Friends,
+.immediately {
+	width: 48%;
+	height: 5.5rem;
+	text-align: center;
+	background: #fff;
+	position: relative;
+	border-radius: 0.75rem;
+}
+
+.content_index .clearfix div p {
+	position: absolute;
+	left: 50%;
+	width: 70px;
+	height: 60px;
+	transform: translateX(-50%) scale(0.6);
+}
+
+.content_index .clearfix div span {
+	width: 100%;
+	height: 30%;
+	display: inline-block;
+	color: #03a9f4;
+	position: absolute;
+	bottom: 1rem;
+	font-size: 1.25rem;
+	transform: translateX(-50%) scale(0.6);
+}
+
+.invite_Friends p {
+	background: url(../img/tb.png) no-repeat 0px 0px;
+}
+
+.immediately p {
+	background: url(../img/tb.png) no-repeat -70px 0px;
+}
+
+.content_index p.content_index_p {
+	padding: 5%;
+	font-size: 0.95rem;
+	color: #4b8686;
+}
+
+#content {
+	padding-bottom: 3.5rem;
+}
+
+
+/*content_memberCenter*/
+
+.my_cash_order,
+.my_pay_order,
+.content_memberCenter,
+.content_FriendManagement,
+.content_my_order,
+.content_mycommission,
+.content_remittance,
+.content_entryecord,
+.content_mybankcard,
+.content_entry {
+	padding: 3%;
+	width: 94%;
+}
+
+.content_memberCenter_cell,
+.FriendManagement_title,
+.FriendManagement_body_cell,
+.my_order_title,
+.my_order_body,
+.content_mycommission_title,
+.content_mycommission_cell,
+.content_remittance_detail,
+.content_entryecord_cell,
+.mybankcard_title,
+.mybankcard_body_cell,
+.mybankcard_body,
+.choose_bank {
+	border-radius: 0.3rem;
+	height: 3.25rem;
+	line-height: 3.25rem;
+	padding: 0.25rem;
+	margin-bottom: 1rem;
+	font-size: 0.75rem;
+}
+
+.choose_bank {
+	border-radius: 0;
+	padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
+    margin-bottom: 0;
+    
+}
+.my_order_body,
+.content_mycommission_cell,
+.content_remittance_detail,
+.content_entryecord_cell,
+.mybankcard_body_cell,
+.mybankcard_body {
+	height: auto;
+	line-height: inherit;
+	padding: 0.75rem;
+	border: 1px solid #887474;
+}
+
+.my_order_body_cell .clearfix {
+	line-height: 1.5rem;
+}
+
+.content_memberCenter_cell .left p {
+	display: inline-block;
+	width: 4.3rem;
+	height: 4.3rem;
+	transform: scale(0.6);
+	float: left;
+	margin-top: -0.45rem;
+}
+
+.Mycommission .left p {
+	background: url(../img/tb.png) no-repeat -17px -212px;
+}
+
+.Presentrecord .left p {
+	background: url(../img/tb.png) no-repeat -107px -212px;
+}
+
+.Mybankcard .left p {
+	background: url(../img/tb.png) no-repeat -197px -212px;
+}
+
+.Myremittancelist .left p {
+	background: url(../img/tb.png) no-repeat -287px -212px;
+}
+
+.memberCenter_det {
+	background: url(../img/tb.png) no-repeat -380px -220px;
+	height: 3.25rem;
+	width: 10%;
+}
+
+
+/*content_FriendManagement*/
+
+.FriendManagement_title,
+.FriendManagement_body_cell,
+.my_order_title,
+.content_mycommission_title,
+.mybankcard_title,
+.choose_bank {
+	height: 2.25rem;
+	line-height: 2.25rem;
+}
+
+.FriendManagement_body_cell {
+	margin-bottom: 0.5rem;
+}
+
+.FriendManagement_title,
+.my_order_title,
+.mybankcard_title {
+	display: flex;
+}
+
+.FriendManagement_title_cell,
+.my_order_title_cell,
+.mybankcard_title_cell {
+	flex: 1;
+	text-align: center;
+}
+
+.FriendManagement_title_cell span,
+.my_order_title_cell span,
+.mybankcard_title_cell span {
+	display: inline-block;
+	position: relative;
+}
+
+/*.FriendManagement_title_active span:after,
+.my_order_title_active span:after,
+.mybankcard_title_active span:after {
+	content: "";
+	width: 5.75rem;
+	height: 1rem;
+	position: absolute;
+	left: 50%;
+	bottom: -0.5rem;
+	background: url(../img/tb.png) no-repeat -220px -23px;
+	transform: translateX(-50%) scale(0.6);
+}*/
+
+/*.my_order_title_active span:after,
+.mybankcard_title_active span:after {
+	transform: translateX(-50%);
+}*/
+
+.FriendManagement_body_cell {
+	font-size: 0.75rem;
+}
+
+.Friend_name,
+.Entry_record {
+	width: 25%;
+}
+
+.jion_time {
+	width: 50%;
+}
+
+.jion_time,
+.Friend_name {
+	text-align: center;
+}
+
+.Entry_record {
+	text-align: right;
+}
+
+.Entry_record button,
+.clearfix.tx_order button {
+	outline: none;
+	background: #fff;
+	color: #ff4040;
+	border: 1px solid #ff4040;
+	border-radius: 0.15rem;
+}
+
+.Friend_name p img {
+	height: 1.5rem;
+	width: 1.5rem;
+	vertical-align: middle;
+}
+
+.Friend_name p,
+.jion_time {
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+
+
+.to_index p {
+	background: url(../img/tb.png) no-repeat 0px -70px;
+}
+
+.to_friend p {
+	background: url(../img/tb.png) no-repeat -70px -70px;
+}
+
+.to_mydetail p {
+	background: url(../img/tb.png) no-repeat -140px -70px;
+}
+
+.to_membercenter p {
+	background: url(../img/tb.png) no-repeat -210px -70px;
+}
+
+.footer_active.to_index p {
+	background: url(../img/tb.png) no-repeat 0px -132px;
+}
+
+.footer_active.to_friend p {
+	background: url(../img/tb.png) no-repeat -70px -132px;
+}
+
+.footer_active.to_mydetail p {
+	background: url(../img/tb.png) no-repeat -140px -132px;
+}
+
+.footer_active.to_membercenter p {
+	background: url(../img/tb.png) no-repeat -210px -132px;
+}
+
+footer div.footer_active span {
+	color: #ff4040;
+}
+
+
+/*header_order*/
+
+.header_order,
+.header_common {
+	height: 8%;
+	width: 100%;
+	background: #ae6b30;
+	text-align: center;
+	display: table;
+	position: relative;
+}
+
+.header_order p,
+.header_common p {
+	color: #fff;
+	vertical-align: middle;
+	display: table-cell;
+}
+
+.header_common span {
+	position: absolute;
+	background: url(../img/tb.png) no-repeat -175px 8px;
+	width: 10%;
+	height: 3.5rem;
+	padding-top: 1.35rem;
+	transform: translateY(-50%) rotate(180deg) scale(0.6);
+	left: 0;
+	top: 50%;
+	margin-top: 0;
+}
+
+
+/*my_order_title*/
+
+.my_order_title,
+.content_mycommission_title,
+.mybankcard_title {
+	margin-top: 1rem;
+}
+
+.size_big {
+	font-size: 0.85rem;
+}
+
+.color_gray {
+	color: #887b7b;
+}
+
+.color_green {
+	color: #03A9F4;
+}
+
+.color_red {
+	color: #F16542;
+}
+
+.my_order_body_cell .clearfix .left {
+	width: 60%;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+.my_order_body_cell .clearfix .right {
+	width: 40%;
+	text-align: right;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+.my_order_body_cell .clearfix.tx_order .left {
+	width: auto;
+}
+
+.my_order_body_cell .clearfix.tx_order .right {
+	width: auto;
+}
+
+.content_mycommission_btn {
+	outline: none;
+	border: none;
+	background: #f16542;
+	color: #fff;
+	border-radius: 0.15rem;
+	display: inline-block;
+	padding: 0.25rem 0.5rem;
+}
+
+.content_mycommission_title {
+	padding-left: 0.75rem;
+	padding-right: 0.75rem;
+}
+
+.content_mycommission_cell .clearfix,
+.content_entryecord_cell .clearfix,
+.mybankcard_body_cell .clearfix {
+	padding-top: 0.25rem;
+	padding-bottom: 0.25rem;
+}
+
+
+/*汇款单*/
+
+.content_remittance_detail p {
+	padding-top: 0.25rem;
+	padding-bottom: 0.25rem;
+}
+
+.content_remittance_payee {
+	border-bottom: 1px solid #ded8d8;
+	padding-bottom: 0.5rem;
+	font-size: 0.85rem;
+}
+
+.content_remittance_remittor {
+	padding-top: 0.5rem;
+	font-size: 0.85rem;
+}
+
+.pay_notice {
+	border-left: 2px solid #ff4040;
+	padding-left: 1rem;
+}
+
+.pay_detail {
+	padding: 0.5rem;
+	font-size: 0.75rem;
+}
+
+.pay_detail p {
+	line-height: 1.15rem;
+}
+
+.WarmPrompt {
+	text-align: center;
+}
+
+.to_btn .ToGenerateOrder,
+.add_bankNo,
+.entry_btn {
+	width: 100%;
+	display: inline-block;
+	background: url(../img/bg_btn.png) no-repeat center;
+	color: #fff;
+	outline: none;
+	border: none;
+	border-radius: 0.25rem;
+	height: 1.95rem;
+	margin-top: 0.75rem;
+	margin-bottom: 0.75rem;
+}

@@ -1,0 +1,218 @@
+h3{
+	margin-top: 100px;
+	padding: 20px;
+	text-align: center;
+	font-size: 24px;
+	padding-bottom: 40px;
+}
+.contentBox{
+	width: 1090px;
+	margin: 0px auto;
+}
+.inputBoxCell{
+	margin-bottom: 20px;
+	padding-left: 100px;
+	padding-right: 100px;
+}
+.inputBoxCell .left,.inputBoxCell .right{
+	width: 50%;
+	text-align: left;
+}
+.inputBoxCell label{
+	display: inline-block;
+	width: 120px;
+	font-size: 14px;
+	text-align: right;
+	padding-right: 15px;
+	color: #333;
+}
+.inputBoxCell input{
+	font-size: 14px;
+	border-radius: 5px;
+	line-height: 45px;
+	height: 45px;
+	outline: none;
+	padding: 5px 0px 5px 5px;
+	border: 1px solid #ccc;
+	width: 275px;
+}
+input#ethAdress:hover,input#ethAdress:focus,input#ethAdress:active{
+	border-color: #B00512;
+}
+.smNotice{
+	margin: 40px 30px;
+	border-top: 1px solid #ccc;
+	text-align: left;
+	padding-bottom: 30px;
+}
+.notice{
+	margin-top: 20px;
+	font-size: 18px;
+}
+.noticeDetail{
+	line-height: 30px;
+	font-size: 14px;
+}
+.textCenter{
+	text-align: center;
+}
+button{
+	width: 100px;
+	height: 40px;
+	font-size: 16px;
+	outline: none;
+	background: transparent;
+	border: none;
+	cursor: pointer;
+}
+#sure{
+	background: #B00512;
+	color: #fff;
+	width: 380px;
+	height: 45px;
+	font-size: 18px;
+	border-radius: 10px;
+	
+}
+#sure:hover{
+	background: #860C15;
+}
+html{
+	width: 100%;
+	height: 100%;
+}
+body{
+	width: 100%;
+	height: 100%;
+	background: url(../img/loginBg.png) no-repeat;
+	background-size: cover;
+}
+header{
+	height: 80px;
+	background: url(../img/head_bg.png) no-repeat;
+	background-size: cover;
+}
+.commonBtn{
+	background: #b00512;
+	border: none;
+	border-radius: 10px;
+	outline: none;
+	position: relative;
+	color: #eee;
+}
+.headBtn{
+	font-size: 14px;
+	width: 140px;
+	height: 40px;
+	margin-top: 20px;
+}
+.headBtn:after{
+	background: url(../img/right_logo.png) no-repeat;
+	width: 20px;
+	height: 20px;
+	content: '';
+	position: absolute;
+	right: 10px;
+	top: 10px;
+}
+.loginBox{
+	display: inline-block;
+	width: 460px;
+	padding-bottom: 40px;
+	margin-top: 220px;
+	border-top: 2px solid #b00512;
+	background: linear-gradient(to bottom, rgba(13,22,61,0.9), rgba(3,3,13,0.9));
+}
+.boxTitle{
+	font-size: 28px;
+	color: #fff;
+	padding-bottom: 40px;
+}
+.loginInputCell{
+	width: 380px;
+	height: 45px;
+	position: relative;
+	margin: 0 auto;
+	background: rgb(22,27,51);
+	border: 1px solid #6f3f3f;
+	border-radius: 5px;
+	margin-bottom: 20px;
+}
+.passInputCell{
+	margin-bottom: 10px;
+}
+.pswBox{
+	margin-bottom: 0px;
+}
+.inputImg{
+	position: absolute;
+	top: 12px;
+	left: 15px;
+}
+.loginInputCell input.loginInput{
+	height: 45px;
+	width: 320px;
+	background: transparent;
+	border: none;
+	outline: none;
+	padding-left: 50px;
+	color: #666;
+	font-size: 14px;
+}
+.loginInputCell:hover{
+	border-color: #b00512;
+}
+
+
+.submitBtn{
+	width: 380px;
+	height: 45px;
+	background: #b00512;
+	font-size: 18px;
+	color: #fff;
+	border: none;
+	outline: none;
+	border-radius: 5px;
+	margin-top: 20px;
+}
+.submitBtn:hover{
+	background: #860c15;
+}
+.errMsg{
+	display: inline-block;
+	text-align: left;
+	width: 380px;
+    line-height: 20px;
+    visibility: hidden;
+    color: #fff;
+}
+
+.codeBtn{
+	background: #B00512;
+	border-radius: 5px;
+	width: 105px;
+	position: absolute;
+	height: 35px;
+	color: #fff;
+	font-size: 14px;
+	right: 5px;
+	top: 5px;
+}
+
+
+.contentDetail{
+	margin-top: 80px;
+	/*padding-top: 100px;*/
+	background: #fff;
+}
+.btnDatil{
+	width: 380px;
+	height: 50px;
+	color: #fff;
+	font-size: 24px;
+	background: #B00512;
+	border-radius: 10px;
+	margin-bottom: 80px;
+	margin-top: -25px;
+	box-shadow: 0px 0px 15px #d05555;
+}

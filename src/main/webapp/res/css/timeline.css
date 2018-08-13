@@ -1,0 +1,8 @@
+@charset "utf-8";
+
+.timeline4{width:500px;margin:40px auto 0 auto;}
+.timeline4_ch{font-size:18px;color:#d80017;margin-bottom:30px;}
+.timeline4_main{position:relative;padding-left:20px;overflow:hidden;}
+.timeline_line{width:1px;height:100%;background-color:#999;position:absolute;left:26px;z-index:-1;}
+.timeline4_main ul li{padding-left:25px;font-size:14px;color:#333333;line-height:30px;margin-bottom:30px;background:url(../images/timeline4_icon.png) left center no-repeat;}
+.timeline4_main ul li:last-child{margin-bottom:0px;}

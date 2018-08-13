@@ -1,0 +1,24 @@
+.layui-layer-btn a {
+    padding: 6px 15px;
+    border: 0 none;
+    border-radius: 0;
+    font-weight: 400;
+}
+
+.layui-layer-btn .layui-layer-btn0 {
+    border-color: #168e76;
+    background-color: #21aa8e;
+    color: #fff
+}
+
+.layui-layer-title {
+    height: 80px;
+    line-height: 80px;
+    font-size: 1.75em;
+    border-bottom: none;
+    background-color: transparent;
+}
+
+.layui-layer-setwin .layui-layer-min:hover cite {
+    background-color: #21aa8e
+}

@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>贴顶时固定在顶部</title>
+    <style>
+        body,
+        div {
+            margin: 0;
+            padding: 0;
+        }
+
+        .pin {
+            width: 100%;
+            height: 28px;
+            line-height: 28px;
+            z-index: 9;
+            font-size: 0.815em;
+            transition: all linear 2s;
+        }
+
+        .demo {
+            width: 100%;
+            height: 400px;
+        }
+
+        @keyframes pinActive {
+            0% {
+                transform: translateY(-28px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        .pin-active {
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            animation: pinActive .5s linear;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="demo pin-placeholder" style="background-color:rgb(255,0,0);"></div>
+    <div class="pin" style="background-color:rgb(0,0,0);color:#fff;text-align:center;">滚动吧七彩君！我要固定在顶部</div>
+    <div class="demo" style="background-color:rgb(255,165,0);"></div>
+    <div class="demo" style="background-color:rgb(255,255,0);"></div>
+    <div class="demo" style="background-color:rgb(0,255,0);"></div>
+    <div class="demo" style="background-color:rgb(0,127,255);"></div>
+    <div class="demo" style="background-color:rgb(0,0,255);"></div>
+    <div class="demo pin-disabled" style="background-color:rgb(139,0,255);"></div>
+    <!--引入CDN jquery文件-->
+    <script src="http://cdn.staticfile.org/jquery/1.12.4/jquery.min.js"></script>
+    <!-- CDN jquery 文件加载失败，则引入本地服务器文件 -->
+    <script type="text/javascript">
+        if (typeof jQuery == 'undefined') {
+            document.write(unescape(
+                "%3Cscript src='libs/jquery/jquery.1.12.4.min.js' type='text/javascript'%3E%3C/script%3E"));
+        }
+    </script>
+    <script src="xPin.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.pin').xPin({
+                targetActiveCls: 'pin-active', // 触发项类名或ID
+                placeholderElement: ".pin-placeholder", // 结构下面还有其它结构，需要一个结构来支撑定位后“丢失”的空间
+                offsetY: 0, // Y轴偏差，文档实时滚动位置 > 目标距离顶部位置 + Y轴偏差
+                disabledTargetElement: ".pin-disabled"
+            });
+        });
+    </script>
+</body>
+
+</html>

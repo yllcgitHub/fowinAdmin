@@ -1,0 +1,248 @@
+<div class="section section-header">
+        <div class="section-wrapper">
+            <div class="pure-u-1">
+                <div class="column-inner">
+                    <h1 class="logo"><a href="index.html" title="公共文化服务云平台"><img src="img/logo-v1.0.1.png" alt="公共文化服务云平台" width="434" height="55"/></a></h1>
+                    <a class="return-home" id="J_BackHomeNoNav" href="index.html">返回首页</a>
+                    <!-- /logo -->
+                    <div class="region popup-wrapper J_Popup">
+                        <div class="popup-header" id = "areatemp">当前位置：<span id="0" title="全国"></span>
+                    </div>
+                        <div class="popup-container">
+                            <div class="popup-panel">
+                                <i class="icon-arrow icon-arrow-up"></i>
+                                <div class="region-content-list clearfix" id="J_RegionHeaderInner">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /region -->
+              <div class="search">
+                <form class="form-wrapper" id="J_HeaderSearchForm">
+                  <div class="form-inner">
+                    <label for="HeaderSearch" class="hidden"></label>
+                    <i class="icon icon-search" title="搜索"></i>
+                    <input autocomplete="off" accesskey="s" name="HeaderSearch" id="HeaderSearch" class="form-item search-input" -webkit-grammar="builtin:translate" placeholder="输入关键字信息">
+                    <button type="button" class="search-button" onclick="searchIndex()">搜全网</button>
+                  </div>
+                </form>
+					<dl class="top-search" id="HotSearch">
+						<dt>最近热搜：</dt>
+					</dl>
+              </div>
+				<!-- /search -->
+				<div class="signinfo hidden" id="signinfo">
+					<a class="title" href="user-info.html" target="_blank"><i class="icon-avatar"></i>个人中心</a>
+					<a class="signout J_SignOut" href="javascript:void(0)">退出</a>
+				</div>
+				<!-- /signinfo -->
+				<div class="sign hidden" id="sign">
+					<a class="signin" href="signin.html">登录</a>
+					<a class="signup" href="signup.html">注册</a>
+				</div>
+				<!-- /sign -->
+                </div>
+            </div>
+        </div>
+    </div>
+<script type="text/javascript">
+    /**
+    *页面启动
+    */
+ 	 $(document).ready(function(){
+		getNavigate();
+		getArea();
+		getHotSearch();
+		var userMobile = getLocalCookieUserMobile();
+		if(userMobile!="null"&&userMobile!=""&& userMobile != undefined && userMobile != "undefined"){
+			$("#signinfo").removeClass("hidden");
+		}else{
+			$("#sign").removeClass("hidden");
+		}
+	 });
+ 	function searchIndex() {
+		var keyWord = $("#HeaderSearch").val();
+		/* var searchType = $("#searchtemp span").attr("id");
+		var param = keyWord + "&" + searchType;
+		if (searchType == 'DIC_RESOURCE_TYPE_9') {
+			location.href = "./search-venue.html?" + "param=" + encodeURI(param);
+		} else if (searchType == 'DIC_RESOURCE_TYPE_7') {
+			location.href = "./search-activity.html?" + "param=" + encodeURI(param);
+		} else if (searchType == 'DIC_RESOURCE_TYPE_8') {
+			location.href = "./search-live.html?" + "param=" + encodeURI(param);
+		} else if (searchType == 'DIC_RESOURCE_TYPE_1') {
+			location.href = "./search-vod.html?" + "param=" + encodeURI(param);
+		} else if (searchType == 'DIC_RESOURCE_TYPE_12') {
+			location.href = "./search-app.html?" + "param=" + encodeURI(param);
+		} */
+		location.href = "./search.html?" + "keyWord=" + encodeURI(keyWord);
+	};
+    	//获取热门搜索
+		function getHotSearch() {
+			$.post(urlPath, {
+				'deviceType' : 'DIC_DEVICE_TYPE_1',
+				'apiKey' : 'api_get_getHotSearch',
+				contentType : "application/json;charset=utf-8",
+				datatype : 'json'
+			}, function(data, status) {
+				if (status == "success") {
+					$.each(data.returnData,function(i,obj){
+						$("#HotSearch").append('<dd><a href="javascript:void(0)" onclick="searchKeywordClick(this)">'+obj.searchKeyword+'</a></dd>');
+					});
+				} else {
+					console.log("API调用出错!");
+				}
+			});
+		}
+		//获取导航、搜索分类
+		function getNavigate() {
+			$.post(urlPath, {
+				'deviceType' : 'DIC_DEVICE_TYPE_1',
+				'apiKey' : 'api_get_navigate',
+				contentType : "application/json;charset=utf-8",
+				datatype : 'json'
+			}, function(data, status) {
+				if (status == "success") {
+					//var datatemp=JSON.stringify(data.returnData);
+					$.each(data.returnData,function(i,obj){
+						if(i==0){
+						}
+						else if((data.returnData.length-2)==i){
+						}else if((data.returnData.length-1)==i){
+						}
+						else{
+ 							if(i==1){
+								$("#searchtemp").append('<span class="xselect-title" id="'+obj.resourceTypeDic+'">'+obj.navName+'</span><i class="icon-arrow icon-arrow-down"></i>');
+							}else{
+								$("#searchul").append('<li class="xselect-item" id ="'+obj.resourceTypeDic+'" onclick="categoryClick(this)">'+obj.navName+'</li>');
+							}
+						}
+					});
+				} else {
+					console.log("API调用出错!");
+				}
+			});
+		}
+		//获取区域
+		function getArea() {
+			$.post(urlPath, {
+				'deviceType' : 'DIC_DEVICE_TYPE_1',
+				'apiKey' : 'api_get_areaByLevel',
+				contentType : "application/json;charset=utf-8",
+				datatype : 'json'
+			}, function(data, status) {
+				if (status == "success") {
+					var localAreaId=getLocalCookieAreaId()
+					//var datatemp=JSON.stringify(data.returnData);
+					$.each(data.returnData,function(i,obj){
+ 						if(i==0){
+							if(localAreaId==null||localAreaId==""){
+								$("#J_RegionHeaderInner").append('<div class="item"><a data-id="'+obj.area_id+'" class="selected" href="javascript:void(0)" onclick="areaClick(this)">'+obj.area_name+'</a></div>');
+								saveLocalCookieAreaId(obj.area_id);
+								$("#areatemp span").text(obj.area_name);
+							}else if(localAreaId==obj.area_id){
+								$("#J_RegionHeaderInner").append('<div class="item"><a data-id="'+obj.area_id+'" class="selected" href="javascript:void(0)" onclick="areaClick(this)">'+obj.area_name+'</a></div>');
+								$("#areatemp span").text(obj.area_name);
+							}else{
+								$("#J_RegionHeaderInner").append('<div class="item"><a data-id="'+obj.area_id+'" href="javascript:void(0)" onclick="areaClick(this)">'+obj.area_name+'</a></div>');
+							}
+						}else{
+							if(localAreaId==obj.area_id){
+								$("#J_RegionHeaderInner").append('<div class="item"><a data-id="'+obj.area_id+'" class="selected" href="javascript:void(0)" onclick="areaClick(this)">'+obj.area_name+'</a></div>');
+								$("#areatemp span").text(obj.area_name);
+							}else{
+								$("#J_RegionHeaderInner").append('<div class="item"><a data-id="'+obj.area_id+'"  href="javascript:void(0)" onclick="areaClick(this)">'+obj.area_name+'</a></div>');
+							}
+						}
+					});
+				} else {
+					console.log("API调用出错!");
+				}
+			});
+		}
+		function searchKeywordClick(btn) {
+			var searchKeywordtext = $(btn).text();
+			/* var searchType = $("#searchtemp span").attr("id"); //资源类型
+			var areaId = $("#areatemp span").attr("id"); //区域ID
+
+			var param = searchKeywordtext + "&" + searchType;
+			if (searchType == 'DIC_RESOURCE_TYPE_9') {
+				location.href = "./search-venue.html?" + "param=" + encodeURI(param);
+			} else if (searchType == 'DIC_RESOURCE_TYPE_7') {
+				location.href = "./search-activity.html?" + "param=" + encodeURI(param);
+			} else if (searchType == 'DIC_RESOURCE_TYPE_8') {
+				location.href = "./search-live.html?" + "param=" + encodeURI(param);
+			} else if (searchType == 'DIC_RESOURCE_TYPE_1') {
+				location.href = "./search-vod.html?" + "param=" + encodeURI(param);
+			} else if (searchType == 'DIC_RESOURCE_TYPE_12') {
+				location.href = "./search-app.html?" + "param=" + encodeURI(param);
+			} */
+			location.href = "./search.html?" + "keyWord=" + encodeURI(searchKeywordtext);
+		}
+		//区域点击事件
+		function areaClick(btn){
+			var areatext=$(btn).text();
+			$(".item a").removeClass("selected");
+			$(btn).attr("class","selected");
+			$("#areatemp span").text(areatext);
+			$("#areatemp span").attr("id",$(btn).attr("data-id"));
+			saveLocalCookieAreaId($(btn).attr("data-id"));
+		}
+		//搜索资源分类点击事件
+		function categoryClick(btn){
+			var categorytext=$(btn).text();
+			$("#searchtemp span").text(categorytext);
+			//alert($(btn).attr("id"));
+			$("#searchtemp span").attr("id",$(btn).attr("id"));
+
+		}
+
+		/**
+		 * 获取区域ID
+		 */
+		function getAreaId(){
+			var areaId=$("#areatemp span").attr("id"); //区域ID
+			return areaId;
+		};
+		 // 弹出
+		  $(".J_Popup").on({
+		        mouseenter: function() {
+		            $(this).addClass("popup-active");
+		        },
+		        mouseleave: function() {
+		            $(this).removeClass("popup-active");
+		        }
+		    });
+		    // 自定义下拉选择项
+		    $(".J_Select").on({
+		        mouseenter: function() {
+		            $(this).addClass("xselect-unfold");
+		        },
+		        mouseleave: function() {
+		            $(this).removeClass("xselect-unfold");
+		        }
+		    });
+		    $(".xselect-item").on("click", function () {
+		        var $this = $(this);
+		        $this.parents(".J_Select").removeClass("xselect-unfold").find(".xselect-title").text($this.text());
+		    });
+		    // 模拟 退出操作提示
+		    $(".J_SignOut").on("click", function () {
+		    	//saveLocalCookieUserId("","","","","");
+		    	removeLocalCookieUserId();
+		    	saveUserVisitor();
+		        layer.open({
+		            type: 1,
+		            title: false,
+		            closeBtn: 0,
+		            shade: 0.8,
+		            shadeClose: true,
+		            area: "550px",
+		            content: $("#J_ModalSignOutSuccess")
+		        });
+		        $(".page-header").find(".signinfo").addClass("hidden").end().find(".sign").removeClass("hidden");
+		        //layer.close(layer.index);
+		        //var menuId = getLocalCookieMenuId();
+		        window.location.href = 'index.html';
+		    });
+	</script>

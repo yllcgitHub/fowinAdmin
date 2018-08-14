@@ -229,7 +229,7 @@ public class AdminUserController extends BaseController {
 			AccountLock accLok = AccountLock.dao.findFirst(" select * from account_lock where vip_no=? ", user.getVipNo());
 			
 			if (Double.parseDouble(accLok.getLockBalance()) == 0) {
-				continue;
+				continue; 
 			}
 			
 			// 扣除锁仓账户余额
